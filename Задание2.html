@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Практическое задание по JavaScript</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        h2 {
+            color: #3498db;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 5px;
+            margin-top: 30px;
+        }
+        
+        .task {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        
+        .code-block {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 15px 0;
+            border-left: 4px solid #3498db;
+        }
+        
+        .result {
+            background-color: #e8f5e9;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 15px;
+            border-left: 4px solid #4caf50;
+        }
+        
+        pre {
+            margin: 0;
+            white-space: pre-wrap;
+        }
+        
+        .console {
+            background-color: #263238;
+            color: #e0e0e0;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+            font-family: 'Courier New', monospace;
+            height: 200px;
+            overflow-y: auto;
+        }
+        
+        .console-line {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Практическое задание по JavaScript</h1>
+    
+    <div class="task">
+        <h2>1. Условный оператор if и функции</h2>
+        <p>Создайте функцию, которая принимает число и проверяет, является ли оно положительным, отрицательным или нулем.</p>
+        
+        <div class="code-block">
+            <pre>function checkNumber(number) {
+    if (number > 0) {
+        return "Число положительное";
+    } else if (number < 0) {
+        return "Число отрицательное";
+    } else {
+        return "Число равно нулю";
+    }
+}
+
+
+console.log(checkNumber(10));
+console.log(checkNumber(-5));
+console.log(checkNumber(0));</pre>
+        </div>
+        
+        <div class="result">
+            <h3>Результат:</h3>
+            <div id="task1-result"></div>
+        </div>
+    </div>
+    
+    <div class="task">
+        <h2>2. Циклы и массивы</h2>
+        <p>Создайте массив чисел и используйте цикл for для вывода каждого элемента, умноженного на 2.</p>
+        
+        <div class="code-block">
+            <pre>const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+console.log("Исходный массив: " + numbers);
+console.log("Каждый элемент умноженный на 2:");
+
+for (let i = 0; i < numbers.length; i++) {
+    console.log(numbers[i] * 2);
+}</pre>
+        </div>
+        
+        <div class="result">
+            <h3>Результат:</h3>
+            <div id="task2-result"></div>
+        </div>
+    </div>
+    
+    <div class="task">
+        <h2>3. Классы и объекты</h2>
+        <p>Создайте класс Person с свойствами name и age и методом для вывода информации.</p>
+        
+        <div class="code-block">
+            <pre>class Person {
+    constructor(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+    
+    getInfo() {
+        return `Имя: ${this.name}, Возраст: ${this.age}`;
+    }
+}
+
+
+const person1 = new Person("Иван", 25);
+const person2 = new Person("Мария", 30);
+
+console.log(person1.getInfo());
+console.log(person2.getInfo());</pre>
+        </div>
+        
+        <div class="result">
+            <h3>Результат:</h3>
+            <div id="task3-result"></div>
+        </div>
+    </div>
+    
+    <div class="console">
+        <h3>Консоль:</h3>
+        <div id="console-output"></div>
+    </div>
+
+    <script>
+
+        const originalConsoleLog = console.log;
+        const consoleOutput = document.getElementById('console-output');
+        
+        console.log = function(message) {
+            originalConsoleLog.apply(console, arguments);
+            const line = document.createElement('div');
+            line.className = 'console-line';
+            line.textContent = message;
+            consoleOutput.appendChild(line);
+            consoleOutput.scrollTop = consoleOutput.scrollHeight;
+        };
+        
+
+        function checkNumber(number) {
+            if (number > 0) {
+                return "Число положительное";
+            } else if (number < 0) {
+                return "Число отрицательное";
+            } else {
+                return "Число равно нулю";
+            }
+        }
+        
+
+        document.getElementById('task1-result').innerHTML = `
+            <p>checkNumber(10): ${checkNumber(10)}</p>
+            <p>checkNumber(-5): ${checkNumber(-5)}</p>
+            <p>checkNumber(0): ${checkNumber(0)}</p>
+        `;
+        
+   
+        console.log("=== Задание 1: Условный оператор if и функции ===");
+        console.log(checkNumber(10));
+        console.log(checkNumber(-5));
+        console.log(checkNumber(0));
+        
+ 
+        const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+        
+        
+        let task2HTML = `<p>Исходный массив: [${numbers.join(', ')}]</p>`;
+        task2HTML += "<p>Каждый элемент умноженный на 2:</p>";
+        task2HTML += "<ul>";
+        for (let i = 0; i < numbers.length; i++) {
+            task2HTML += `<li>${numbers[i]} × 2 = ${numbers[i] * 2}</li>`;
+        }
+        task2HTML += "</ul>";
+        document.getElementById('task2-result').innerHTML = task2HTML;
+        
+     
+        console.log("\n=== Задание 2: Циклы и массивы ===");
+        console.log("Исходный массив: " + numbers);
+        console.log("Каждый элемент умноженный на 2:");
+        for (let i = 0; i < numbers.length; i++) {
+            console.log(numbers[i] * 2);
+        }
+        
+      
+        class Person {
+            constructor(name, age) {
+                this.name = name;
+                this.age = age;
+            }
+            
+            getInfo() {
+                return `Имя: ${this.name}, Возраст: ${this.age}`;
+            }
+        }
+        
+    
+        const person1 = new Person("Иван", 25);
+        const person2 = new Person("Мария", 30);
+        
+      
+       
+        document.getElementById('task3-result').innerHTML = `
+            <p>${person1.getInfo()}</p>
+            <p>${person2.getInfo()}</p>
+        `;
+        
+       
+        console.log("\n=== Задание 3: Классы и объекты ===");
+        console.log(person1.getInfo());
+        console.log(person2.getInfo());
+        
+       
+        console.log("\n=== Дополнительные примеры ===");
+        
+       
+        console.log("Дополнительные проверки чисел:");
+        console.log(checkNumber(100));
+        console.log(checkNumber(-3.14));
+        console.log(checkNumber(0));
+        
+       
+        console.log("\nДругой массив [10, 15, 20, 25]:");
+        const otherNumbers = [10, 15, 20, 25];
+        for (let i = 0; i < otherNumbers.length; i++) {
+            console.log(otherNumbers[i] * 2);
+        }
+        
+        
+        const person3 = new Person("Алексей", 35);
+        console.log("\n" + person3.getInfo());
+    </script>
+</body>
+</html>
