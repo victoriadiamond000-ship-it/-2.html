@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Страница с прыгающим сердечком</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            background: linear-gradient(135deg, #ffe8e8 0%, #f9f9f9 100%);
+            color: #333;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .heart {
+            position: fixed;
+            font-size: 2rem;
+            color: #ff4d4d;
+            z-index: 1000;
+            pointer-events: none;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            transition: transform 0.2s ease;
+        }
+
+        #header {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ff4d4d 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            border: 3px solid #ff3333;
+            text-align: center;
+            animation: pulse 3s infinite;
+            position: relative;
+            z-index: 2;
+        }
+
+        #header h1 {
+            margin-top: 0;
+            font-size: 2.2em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        #main-content {
+            background: linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            border: 3px solid #3a9188;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .local-image {
+            width: 300px;
+            height: 150px;
+            background: linear-gradient(135deg, #ffd93d 0%, #ff9c3d 100%);
+            border: 4px solid #fff;
+            border-radius: 8px;
+            margin: 15px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #333;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+
+        .content-block {
+            background: linear-gradient(135deg, #ffd93d 0%, #ff9c3d 100%);
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            border: 2px solid #ff8c1a;
+            font-size: 16px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            z-index: 2;
+        }
+
+        .content-block:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        }
+
+        .content-block h3 {
+            color: #333;
+            margin-top: 0;
+            font-size: 1.4em;
+        }
+
+        .content-block ul, .content-block ol {
+            margin-bottom: 0;
+            text-align: left;
+            padding-left: 20px;
+        }
+
+        button {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 10px 0;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+
+
+        #greeting-message {
+            font-weight: bold;
+            font-size: 18px;
+            color: #6a11cb;
+            margin-top: 15px;
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 8px;
+            border-left: 4px solid #6a11cb;
+            animation: fadeIn 1s ease-in;
+        }
+
+
+        .content-block:nth-child(4) {
+            background: linear-gradient(135deg, #ff6b6b 0%, #c04848 100%);
+            color: white;
+        }
+
+        .content-block:nth-child(4) h3 {
+            color: white;
+        }
+
+        .content-block:nth-child(5) {
+            background: linear-gradient(135deg, #9c27b0 0%, #6a1b9a 100%);
+            color: white;
+        }
+
+        .content-block:nth-child(5) h3 {
+            color: white;
+        }
+
+
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            #header h1 {
+                font-size: 1.8em;
+            }
+            
+            .content-block {
+                padding: 15px;
+            }
+            
+            .local-image {
+                width: 250px;
+                height: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="header">
+        <h1>💖 Добро пожаловать на мою страницу! 💖</h1>
+        <p>Этот блок создан, чтобы поднять вам настроение!</p>
+    </div>
+    
+    <div id="main-content">
+        <h2>✨ Основное содержимое ✨</h2>
+        <p>Здесь вы найдете интересные элементы и позитивный контент</p>
+        <div class="49DB8A75-0DD2-4753-A419-2881ED682498.jpeg">
+            49DB8A75-0DD2-4753-A419-2881ED682498.jpeg
+        </div>
+    </div>
+
+    
+    <div class="content-block">
+        <h3>😊 Блок 1: Цитаты для хорошего настроения</h3>
+        <p>Несколько вдохновляющих мыслей:</p>
+        <ul>
+            <li>"Сегодняшний день - это подарок. Поэтому он и называется настоящим!"</li>
+            <li>"Улыбка - это кривая, которая выпрямляет все трудности"</li>
+            <li>"Счастье не в том, чтобы делать всегда то, что хочешь, а в том, чтобы всегда хотеть того, что делаешь"</li>
+        </ul>
+    </div>
+    
+    <div class="content-block">
+        <h3>🌈 Блок 2: Факты о счастье</h3>
+        <p>Знаете ли вы, что:</p>
+        <p>Всего 10 минут смеха в день могут значительно улучшить ваше здоровье и настроение!</p>
+    </div>
+    
+    <div class="content-block">
+        <h3>🎯 Блок 3: Интерактивное приветствие</h3>
+        <p>Нажмите на кнопку ниже для персонального приветствия:</p>
+        <button onclick="showGreeting()">Получить приветствие!</button>
+        <p id="greeting-message"></p>
+    </div>
+
+    <script>
+        
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.innerHTML = '💖';
+            heart.classList.add('heart');
+            
+            const startX = Math.random() * (window.innerWidth - 50);
+            const startY = -50;
+            
+            heart.style.left = startX + 'px';
+            heart.style.top = startY + 'px';
+            
+            document.body.appendChild(heart);
+            
+          
+            let x = startX;
+            let y = startY;
+            let xSpeed = (Math.random() - 0.5) * 4;
+            let ySpeed = 2;
+            const gravity = 0.1;
+            const bounce = 0.7;
+            
+            function animate() {
+                ySpeed += gravity;
+                x += xSpeed;
+                y += ySpeed;
+                
+                
+                if (x <= 0) {
+                    x = 0;
+                    xSpeed = -xSpeed * bounce;
+                } else if (x >= window.innerWidth - 30) {
+                    x = window.innerWidth - 30;
+                    xSpeed = -xSpeed * bounce;
+                }
+                
+                if (y >= window.innerHeight - 30) {
+                    y = window.innerHeight - 30;
+                    ySpeed = -ySpeed * bounce;
+                    
+                
+                    if (Math.abs(ySpeed) < 0.5) {
+                        heart.remove();
+                        return;
+                    }
+                }
+                
+                heart.style.left = x + 'px';
+                heart.style.top = y + 'px';
+                
+             
+                if (document.body.contains(heart)) {
+                    requestAnimationFrame(animate);
+                }
+            }
+            
+            animate();
+            
+            
+            setTimeout(() => {
+                if (heart.parentNode) {
+                    heart.remove();
+                }
+            }, 15000);
+        }
+        
+        
+        function startHearts() {
+            createHeart();
+            setInterval(createHeart, 2000);
+        }
+        
+       
+        function showGreeting() {
+            const greetings = [
+                "Желаю вам прекрасного дня! 🌞",
+                "Пусть сегодня произойдет что-то удивительное! ✨",
+                "Вы выглядите просто великолепно сегодня! 💫",
+                "Ваша улыбка делает мир лучше! 😊",
+                "Сегодня ваш день - наслаждайтесь каждым моментом! 🎉"
+            ];
+            
+            const randomGreeting = greetings[Math.floor(Math.random() * greetings.length)];
+            document.getElementById('greeting-message').textContent = randomGreeting;
+            
+      
+            const messageElement = document.getElementById('greeting-message');
+            messageElement.style.animation = 'none';
+            setTimeout(() => {
+                messageElement.style.animation = 'fadeIn 1s ease-in';
+            }, 10);
+            
+         
+            createHeart();
+        }
+     
+        window.addEventListener('load', startHearts);
+        
+       
+        let mouseMoveTimer;
+        document.addEventListener('mousemove', () => {
+            clearTimeout(mouseMoveTimer);
+            mouseMoveTimer = setTimeout(createHeart, 300);
+        });
+        
+  
+        document.addEventListener('click', createHeart);
+    </script>
+</body>
+</html>
